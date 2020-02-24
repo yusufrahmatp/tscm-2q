@@ -1,0 +1,4 @@
+/Users/rama/Documents/Semester_8/Modsim/Tugas_1/build/CMakeFiles/rebuild_cache.dir
+/Users/rama/Documents/Semester_8/Modsim/Tugas_1/build/CMakeFiles/edit_cache.dir
+/Users/rama/Documents/Semester_8/Modsim/Tugas_1/build/CMakeFiles/tscm.dir
+/Users/rama/Documents/Semester_8/Modsim/Tugas_1/build/CMakeFiles/simlib.dir

@@ -1,0 +1,205 @@
+
+
+Time-shared computer model
+
+Number of terminals       10 to  80 by   10
+
+Mean think time       25.000 seconds
+
+Mean service time      0.800 seconds
+
+Quantum                0.100 seconds
+
+Swap time              0.015 seconds
+
+Number of jobs processed        1000
+
+
+Number of      Average         Average         Average       Utilization       Utilization
+terminals   response time  number in queue1  number in queue2   of CPU1       of CPU2
+
+   10           1.106           0.036           0.036           0.190           0.171
+
+   20           1.311           0.143           0.170           0.333           0.347
+
+   30           1.870           0.542           0.489           0.544           0.497
+
+   40           3.069           1.686           1.493           0.662           0.708
+
+   50           4.792           4.006           2.551           0.875           0.804
+
+   60           7.967           9.850           3.120           0.960           0.819
+
+   70          10.349          11.654           6.620           0.975           0.941
+
+   80          12.546           8.418          16.004           0.965           0.993
+
+Time-shared computer model
+
+Number of terminals       20 to  90 by   10
+
+Mean think time       20.000 seconds
+
+Mean service time      1.000 seconds
+
+Quantum                0.200 seconds
+
+Swap time              0.010 seconds
+
+Number of jobs processed        1500
+
+
+Number of      Average         Average         Average       Utilization       Utilization
+terminals   response time  number in queue1  number in queue2   of CPU1       of CPU2
+
+   20           1.881           0.378           0.385           0.478           0.475
+
+   30           2.848           1.099           1.267           0.682           0.707
+
+   40           4.096           2.410           2.535           0.841           0.841
+
+   50           8.294           7.175           6.046           0.967           0.933
+
+   60          11.294           9.648           9.847           0.993           0.957
+
+   70          19.373          27.179           5.517           0.994           0.891
+
+   80          21.833          10.388          29.810           0.946           0.997
+
+   90          26.927          25.257          26.050           0.993           1.000
+
+Time-shared computer model
+
+Number of terminals       30 to 100 by   10
+
+Mean think time       30.000 seconds
+
+Mean service time      1.200 seconds
+
+Quantum                0.300 seconds
+
+Swap time              0.020 seconds
+
+Number of jobs processed        2000
+
+
+Number of      Average         Average         Average       Utilization       Utilization
+terminals   response time  number in queue1  number in queue2   of CPU1       of CPU2
+
+   30           2.896           0.831           0.665           0.610           0.569
+
+   40           4.333           1.622           1.724           0.748           0.770
+
+   50           6.783           4.272           3.179           0.859           0.869
+
+   60          13.672           4.160          13.046           0.847           0.959
+
+   70          15.668          10.726          11.011           0.953           0.945
+
+   80          19.793          14.286          14.895           0.991           1.000
+
+   90          25.538          19.975          18.684           0.999           0.994
+
+  100          37.121          34.015          19.604           0.999           0.951
+
+Time-shared computer model
+
+Number of terminals       40 to 110 by   10
+
+Mean think time       35.000 seconds
+
+Mean service time      0.600 seconds
+
+Quantum                0.400 seconds
+
+Swap time              0.025 seconds
+
+Number of jobs processed        2500
+
+
+Number of      Average         Average         Average       Utilization       Utilization
+terminals   response time  number in queue1  number in queue2   of CPU1       of CPU2
+
+   40           1.007           0.214           0.177           0.367           0.345
+
+   50           1.159           0.334           0.331           0.443           0.431
+
+   60           1.415           0.690           0.551           0.507           0.548
+
+   70           1.657           0.768           1.128           0.613           0.655
+
+   80           1.975           1.262           1.661           0.720           0.719
+
+   90           2.028           1.448           1.846           0.736           0.742
+
+  100           2.491           1.972           2.924           0.797           0.814
+
+  110           4.058           5.964           3.542           0.910           0.895
+
+Time-shared computer model
+
+Number of terminals       50 to 120 by   10
+
+Mean think time       40.000 seconds
+
+Mean service time      0.400 seconds
+
+Quantum                0.500 seconds
+
+Swap time              0.030 seconds
+
+Number of jobs processed        3000
+
+
+Number of      Average         Average         Average       Utilization       Utilization
+terminals   response time  number in queue1  number in queue2   of CPU1       of CPU2
+
+   50           0.588           0.087           0.093           0.273           0.283
+
+   60           0.630           0.129           0.149           0.318           0.334
+
+   70           0.727           0.224           0.249           0.370           0.400
+
+   80           0.801           0.411           0.301           0.449           0.429
+
+   90           0.897           0.483           0.531           0.506           0.529
+
+  100           0.866           0.513           0.457           0.522           0.519
+
+  110           0.918           0.621           0.645           0.572           0.567
+
+  120           1.239           1.218           1.065           0.661           0.659
+
+Time-shared computer model
+
+Number of terminals       50 to 120 by   10
+
+Mean think time       40.000 seconds
+
+Mean service time      0.400 seconds
+
+Quantum                0.500 seconds
+
+Swap time              0.030 seconds
+
+Number of jobs processed        3000
+
+
+Number of      Average         Average         Average       Utilization       Utilization
+terminals   response time  number in queue1  number in queue2   of CPU1       of CPU2
+
+   50           0.590           0.089           0.086           0.267           0.264
+
+   60           0.622           0.120           0.152           0.309           0.328
+
+   70           0.662           0.216           0.180           0.360           0.362
+
+   80           0.713           0.271           0.266           0.418           0.410
+
+   90           0.775           0.362           0.384           0.469           0.478
+
+  100           0.883           0.579           0.518           0.555           0.523
+
+  110           1.064           0.847           0.832           0.586           0.622
+
+  120           0.967           0.753           0.708           0.589           0.596

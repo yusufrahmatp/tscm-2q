@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/rama/Documents/Semester_8/Modsim/Tugas_1/lib/simlib.c
+stdio.h
+-
+stdlib.h
+-
+math.h
+-
+simlibdefs.h
+/Users/rama/Documents/Semester_8/Modsim/Tugas_1/lib/simlibdefs.h
+
+/Users/rama/Documents/Semester_8/Modsim/Tugas_1/lib/simlibdefs.h
+
