@@ -8,7 +8,7 @@ TSCM-2q is a time-shared computer model using simulation of 2 queues and CPUs. P
 ## How to run
 1. Go to build folder and run cmake
 ```
-cd build
+mkdir build && cd build
 cmake ..
 ```
 
@@ -17,10 +17,14 @@ cmake ..
 make
 ```
 
-3. Run the program
+3. Modify input in `tscomp.in`
+
+4. Run the program
 ```
 ./tscm
 ```
+
+5. Check output report in `tscomp.out`
 
 ## Author
 Yusuf Rahmat Pratama / [yusufrahmatp](https://github.com/yusufrahmatp)<br>
