@@ -1,5 +1,6 @@
 
 
+--------------------------------------TEST 1--------------------------------------
 Time-shared computer model
 
 Number of terminals       10 to  80 by   10
@@ -34,6 +35,7 @@ terminals   response time  number in queue1  number in queue2   of CPU1       of
 
    80          12.546           8.418          16.004           0.965           0.993
 
+--------------------------------------TEST 2--------------------------------------
 Time-shared computer model
 
 Number of terminals       20 to  90 by   10
@@ -68,6 +70,7 @@ terminals   response time  number in queue1  number in queue2   of CPU1       of
 
    90          26.927          25.257          26.050           0.993           1.000
 
+--------------------------------------TEST 3--------------------------------------
 Time-shared computer model
 
 Number of terminals       30 to 100 by   10
@@ -102,6 +105,7 @@ terminals   response time  number in queue1  number in queue2   of CPU1       of
 
   100          37.121          34.015          19.604           0.999           0.951
 
+--------------------------------------TEST 4--------------------------------------
 Time-shared computer model
 
 Number of terminals       40 to 110 by   10
@@ -136,6 +140,7 @@ terminals   response time  number in queue1  number in queue2   of CPU1       of
 
   110           4.058           5.964           3.542           0.910           0.895
 
+--------------------------------------TEST 5--------------------------------------
 Time-shared computer model
 
 Number of terminals       50 to 120 by   10
@@ -169,37 +174,3 @@ terminals   response time  number in queue1  number in queue2   of CPU1       of
   110           0.918           0.621           0.645           0.572           0.567
 
   120           1.239           1.218           1.065           0.661           0.659
-
-Time-shared computer model
-
-Number of terminals       50 to 120 by   10
-
-Mean think time       40.000 seconds
-
-Mean service time      0.400 seconds
-
-Quantum                0.500 seconds
-
-Swap time              0.030 seconds
-
-Number of jobs processed        3000
-
-
-Number of      Average         Average         Average       Utilization       Utilization
-terminals   response time  number in queue1  number in queue2   of CPU1       of CPU2
-
-   50           0.590           0.089           0.086           0.267           0.264
-
-   60           0.622           0.120           0.152           0.309           0.328
-
-   70           0.662           0.216           0.180           0.360           0.362
-
-   80           0.713           0.271           0.266           0.418           0.410
-
-   90           0.775           0.362           0.384           0.469           0.478
-
-  100           0.883           0.579           0.518           0.555           0.523
-
-  110           1.064           0.847           0.832           0.586           0.622
-
-  120           0.967           0.753           0.708           0.589           0.596

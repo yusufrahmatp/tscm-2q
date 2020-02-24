@@ -13,12 +13,12 @@
 #define SAMPST_RESPONSE_TIMES  1  /* sampst variable for response times. */
 #define STREAM_THINK           1  /* Random-number stream for think times. */
 #define STREAM_SERVICE         2  /* Random-number stream for service times. */
-#define STREAM_ASSIGN          3  /* Random-number for assigning cou to job */
+#define STREAM_ASSIGN          3  /* Random-number for assigning Job to CPU */
 
 /* Declare non-simlib global variables. */
 
 int   min_terms, max_terms, incr_terms, num_terms, num_responses,
-      num_responses_required, term;
+      num_responses_required, term, count;
 float mean_think, mean_service, quantum, swap;
 FILE  *infile, *outfile;
 
@@ -30,13 +30,14 @@ void start_CPU_run(int cpu_num);
 void end_CPU_run(int cpu_num);
 void report(void);
 
-
-int main()  /* Main function. */
-{
+/* Main function. */
+int main() {
     /* Open input and output files. */
 
     infile  = fopen("../tscomp.in",  "r");
     outfile = fopen("../tscomp.out", "w");
+
+    count = 0;
 
     while(!feof(infile)) {
 
@@ -48,7 +49,10 @@ int main()  /* Main function. */
 
         /* Write report heading and input parameters. */
 
-        fprintf(outfile, "\n\nTime-shared computer model\n\n");
+        ++count;
+        printf("\n\n------------------------------------------TEST %d------------------------------------------\n", count);
+        fprintf(outfile, "\n\n--------------------------------------TEST %d--------------------------------------\n", count);
+        fprintf(outfile, "Time-shared computer model\n\n");
         fprintf(outfile, "Number of terminals%9d to%4d by %4d\n\n",
                 min_terms, max_terms, incr_terms);
         fprintf(outfile, "Mean think time  %11.3f seconds\n\n", mean_think);
@@ -63,8 +67,7 @@ int main()  /* Main function. */
 
         /* Run the simulation varying the number of terminals. */
 
-        for (num_terms = min_terms; num_terms <= max_terms;
-            num_terms += incr_terms) {
+        for (num_terms = min_terms; num_terms <= max_terms; num_terms += incr_terms) {
 
             /* Initialize simlib */
 
@@ -96,19 +99,16 @@ int main()  /* Main function. */
 
                 switch (next_event_type) {
                     case EVENT_ARRIVAL:
-                        printf("ARRIVE\n");
                         arrive();
                         break;
                     case EVENT_END_CPU_1_RUN:
-                        printf("END EVENT CPU1\n");
                         end_CPU_run(LIST_CPU_1);
                         break;
                     case EVENT_END_CPU_2_RUN:
-                        printf("END EVENT CPU2\n");
                         end_CPU_run(LIST_CPU_2);
                         break;
                     case EVENT_END_SIMULATION:
-                        printf("END SIM\n");
+                        printf("\nEND SIMULATION");
                         report();
                         break;
                 }
@@ -117,7 +117,7 @@ int main()  /* Main function. */
             EVENT_END_SIMULATION), continue simulating.  Otherwise, end the
             simulation. */
 
-            } while (next_event_type != EVENT_END_SIMULATION);
+            } while (next_event_type != EVENT_END_SIMULATION); 
         }
     }
 
@@ -127,10 +127,9 @@ int main()  /* Main function. */
     return 0;
 }
 
-
-void arrive(void)  /* Event function for arrival of job at CPU after think
-                      time. */
-{
+/* Event function for arrival of job at CPU after think time. */
+void arrive(void) {
+    
     int queue_num;
 
     /* Place the arriving job at the end of the CPU queue.
@@ -142,8 +141,12 @@ void arrive(void)  /* Event function for arrival of job at CPU after think
     transfer[1] = sim_time;
     transfer[2] = expon(mean_service, STREAM_SERVICE);
 
+    printf("\nReceived event arrival with {sim_time=%.3f, service_time=%.3f}", transfer[1], transfer[2]);
+
     queue_num = assignJob();
     list_file(LAST, queue_num);
+
+    printf("\nAssigned event to QUEUE_%d", (queue_num-2));
 
     /* If the CPU is idle, start a CPU run. */
     /* Note: LIST_CPU_N is (LIST_QUEUE for CPU N - 2) */
@@ -152,6 +155,7 @@ void arrive(void)  /* Event function for arrival of job at CPU after think
         start_CPU_run(queue_num - 2);
 }
 
+/* Function for assigning a event to one of the queue/CPU */
 int assignJob(void) {
     double result = uniform(0, 1, STREAM_ASSIGN);
     if (result < 0.5) {
@@ -162,9 +166,9 @@ int assignJob(void) {
     }
 }
 
+/* Non-event function to start a CPU run of a job. */
+void start_CPU_run(int cpu_num) {
 
-void start_CPU_run(int cpu_num)  /* Non-event function to start a CPU run of a job. */
-{
     const int queue_num = cpu_num + 2;
     int cpu_end_event;
     float run_time;
@@ -179,6 +183,8 @@ void start_CPU_run(int cpu_num)  /* Non-event function to start a CPU run of a j
         run_time = quantum + swap;
     else
         run_time = transfer[2] + swap;
+    
+    printf("\nCPU %d runs event {sim_time=%.3f, service_time=%.3f} for %.3f s", cpu_num, transfer[1], transfer[2], run_time);
 
     /* Decrement remaining CPU time by a full quantum.  (If less than a full
        quantum is needed, this attribute becomes negative.  This indicates that
@@ -203,9 +209,8 @@ void start_CPU_run(int cpu_num)  /* Non-event function to start a CPU run of a j
     event_schedule(sim_time + run_time, cpu_end_event);
 }
 
-
-void end_CPU_run(int cpu_num)  /* Event function to end a CPU run of a job. */
-{
+/* Event function to end a CPU run of a job. */
+void end_CPU_run(int cpu_num) {
     const int queue_num = cpu_num + 2;
 
     /* Remove the job from the CPU. */
@@ -218,6 +223,8 @@ void end_CPU_run(int cpu_num)  /* Event function to end a CPU run of a job. */
 
         /* This job requires more CPU time, so place it at the end of the queue
            and start the first job in the queue. */
+        
+        printf("\nEvent {sim_time=%.3f, service_time=%.3f} requires more CPU time. Putting back to queue", transfer[1], transfer[2]);
 
         list_file(LAST, queue_num);
         start_CPU_run(cpu_num);
@@ -228,6 +235,8 @@ void end_CPU_run(int cpu_num)  /* Event function to end a CPU run of a job. */
         /* This job is finished, so collect response-time statistics and send it
            back to its terminal, i.e., schedule another arrival from the same
            terminal. */
+        
+        printf("\nEvent {sim_time=%.3f} finished", transfer[1]);
 
         sampst(sim_time - transfer[1], SAMPST_RESPONSE_TIMES);
 
@@ -257,9 +266,8 @@ void end_CPU_run(int cpu_num)  /* Event function to end a CPU run of a job. */
     }
 }
 
-
-void report(void)  /* Report generator function. */
-{
+/* Report generator function. */
+void report(void) {
     /* Get and write out estimates of desired measures of performance. */
 
     fprintf(outfile, "\n\n%5d%16.3f%16.3f%16.3f%16.3f%16.3f", num_terms,
